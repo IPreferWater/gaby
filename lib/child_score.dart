@@ -43,7 +43,7 @@ class _ChildScoreState extends State<ChildScore> {
           });
         },
       ),
-      /* TodoName(
+      TodoName(
         title: "Bilirubine (µmol/l)",
         rowTabOpts: [
           RowTabOpts(title: "<35", value: 1),
@@ -55,52 +55,19 @@ class _ChildScoreState extends State<ChildScore> {
             _bilirubine = value;
           });
         },
-      )*/
+      )
     ];
 
     print(todoNames);
-    return Expanded(
-      child: Column(
-        children: [
-          Text('${calculateScore()}'),
-          Expanded(
-            child: todoNames.map((e) => 
-            RowTab(
-              title: title, 
-              onValueChanged: onValueChanged, 
-              options: options)).toList(growable: false);
-            /*child: RowTab(
-              title: 'Ascite',
-              options: [
-                RowTabOpts(title: "absente", value: 1),
-                RowTabOpts(title: "modérée", value: 2),
-                RowTabOpts(
-                    title: "tendu ou réfractaire aux diurétiques", value: 3)
-              ],
-              onValueChanged: (int value) {
-                setState(() {
-                  _ascite = value;
-                });
-              },
-            ),
-          ),
-          Expanded(
-            child: RowTab(
-              title: 'Bilirubine (µmol/l)',
-              options: [
-                RowTabOpts(title: "<35", value: 1),
-                RowTabOpts(title: "35-50", value: 2),
-                RowTabOpts(title: ">50", value: 3)
-              ],
-              onValueChanged: (int value) {
-                setState(() {
-                  _bilirubine = value;
-                });
-              },
-            ),*/
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Text('${calculateScore()}'),
+        for (var todoName in todoNames)
+          RowTab(
+              title: todoName.title,
+              options: todoName.rowTabOpts,
+              onValueChanged: todoName.onValueChanged)
+      ],
     );
   }
 }
