@@ -23,14 +23,18 @@ class RowTab extends StatefulWidget {
 }
 
 class _RowTabState extends State<RowTab> {
-
   int _valueToReturn = 0;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(widget.title),
+        Text(widget.title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.blue,
+            )
+            ),
         for (var opts in widget.options)
           ListTile(
               title: Text(opts.title),
