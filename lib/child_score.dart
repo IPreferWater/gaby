@@ -110,32 +110,35 @@ class _ChildScoreState extends State<ChildScore> {
       )
     ];
 
-    return Column(
-      children: [
-        // if are values are set, show the score
-        isAllValuesSet() == true
-            ? Text('Child score : ${calculateScore()}',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                    fontSize: 50))
-            //if some values are missing, display warning message
-            : Text('Child score : check all values}',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.orange,
-                    fontSize: 30)),
-        Expanded(
-          child: ListView.builder(
-              itemCount: todoNames.length,
-              itemBuilder: (BuildContext context, int index) {
-                return RowTab(
-                    title: todoNames[index].title,
-                    options: todoNames[index].rowTabOpts,
-                    onValueChanged: todoNames[index].onValueChanged);
-              }),
-        )
-      ],
+    return Scaffold(
+      appBar: AppBar(title: const Text("title")),
+      body: Column(
+        children: [
+          // if are values are set, show the score
+          isAllValuesSet() == true
+              ? Text('Child score : ${calculateScore()}',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                      fontSize: 50))
+              //if some values are missing, display warning message
+              : Text('Child score : check all values}',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange,
+                      fontSize: 30)),
+          Expanded(
+            child: ListView.builder(
+                itemCount: todoNames.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return RowTab(
+                      title: todoNames[index].title,
+                      options: todoNames[index].rowTabOpts,
+                      onValueChanged: todoNames[index].onValueChanged);
+                }),
+          )
+        ],
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'child_score.dart';
+import 'gastro_categories.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: const Text("title"),
             ),
-            body: ChildScore()));
-    //body: Text("ok")));
+            //body: ChildScore()));
+            body: CategoriesScreen()));
   }
 }
