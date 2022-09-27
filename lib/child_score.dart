@@ -122,7 +122,7 @@ class _ChildScoreState extends State<ChildScore> {
                       color: Colors.blue,
                       fontSize: 50))
               //if some values are missing, display warning message
-              : Text('Child score : check all values}',
+              : Text('Child score : remplissez tous les champs',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.orange,
