@@ -25,11 +25,12 @@ class _MeldScoreState extends State<MeldScore> {
   double _inr = -1;
   double _creatinine = -1;
 
+//TODO if val < 1, then =1
   String calculateScore() {
-    return ((3.78 * log(_bilirubine)) +
-            11.2 * log(_inr) +
-            9.57 * log(_creatinine))
-        .toStringAsFixed(3);
+    double score = ((3.78 * log(_bilirubine) + (11.2 * log(_inr))) +
+        (9.57 * log(_creatinine)) +
+        6.43);
+    return score.toStringAsFixed(3);
   }
 
   bool isAllValuesSet() {
@@ -44,10 +45,14 @@ class _MeldScoreState extends State<MeldScore> {
           onValueChanged: (String value) {
             double? d = double.tryParse(value);
             if (d == null) {
-              print('cant parse double ' + value);
+              print('cant parse double $value');
             } else {
+
+              if (d < 1) {
+                d = 1;
+              }
               setState(() {
-                _bilirubine = d;
+                _bilirubine = d!;
               });
             }
           }),
@@ -57,10 +62,13 @@ class _MeldScoreState extends State<MeldScore> {
             setState(() {
               double? d = double.tryParse(value);
               if (d == null) {
-                print('cant parse double ' + value);
+                print('cant parse double $value');
               } else {
+                if (d < 1) {
+                d = 1;
+              }
                 setState(() {
-                  _inr = d;
+                  _inr = d!;
                 });
               }
             });
@@ -71,10 +79,14 @@ class _MeldScoreState extends State<MeldScore> {
             setState(() {
               double? d = double.tryParse(value);
               if (d == null) {
-                print('cant parse double ' + value);
+                print('cant parse double $value');
               } else {
+
+                if (d < 1) {
+                d = 1;
+              }
                 setState(() {
-                  _creatinine = d;
+                  _creatinine = d!;
                 });
               }
             });
@@ -86,13 +98,16 @@ class _MeldScoreState extends State<MeldScore> {
         children: [
           // if are values are set, show the score
           isAllValuesSet() == true
-              ? Text('Meld score : ${calculateScore()}',
+              ? Text(
+              'Meld score : ${calculateScore()}',
+              key: const Key("score"),
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.blue,
                       fontSize: 50))
               //if some values are missing, display warning message
               : Text('Meld Score : remplissez tous les champs',
+              key : const Key("score"),
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.orange,
@@ -107,6 +122,7 @@ class _MeldScoreState extends State<MeldScore> {
                 itemBuilder: (BuildContext context, int index) {
                   TodoName t = todoNames[index];
                   return TextField(
+                    key: Key(t.title),
                     decoration: InputDecoration(
                         labelText: t.title,
                         hintText: t.title,
