@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaby/blatchford_score.dart';
 import 'package:gaby/child_score.dart';
 import 'package:gaby/meld_score.dart';
 
@@ -23,6 +24,15 @@ class CategoriesScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => MeldScore()));
             },
             child: const Text('Score de Meld'),
+          ),
+        ),
+                Center(
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BlatchfordScore()));
+            },
+            child: const Text('Score de Blatchford'),
           ),
         )
       ]),
