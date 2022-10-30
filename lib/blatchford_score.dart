@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gaby/checkbox_return_value.dart';
 import 'package:gaby/row_tab.dart';
 import 'package:gaby/widgets/score.dart';
-
-enum Gender { female, male }
+import 'package:gaby/const/const.dart';
+import 'package:gaby/widgets/switch_gender.dart';
 
 class TodoName {
   String title;
@@ -24,7 +24,6 @@ class BlatchfordScore extends StatefulWidget {
 }
 
 class _BlatchfordScoreState extends State<BlatchfordScore> {
-  bool _switch = false;
   Gender _gender = Gender.female;
   int _urea = -1;
   int _haemoglobin = -1;
@@ -60,54 +59,13 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
               title: "Blatchford score",
               score: calculateScore(),
               allValueSet: isAllValuesSet()),
-          // if are values are set, show the score
-          /*isAllValuesSet() == true
-              ? Text('Blatchford score : ${calculateScore()}',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                      fontSize: 50))
-              //if some values are missing, display warning message
-              : Text('Blatchford score : remplissez tous les champs',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange,
-                      fontSize: 30)),*/
-          Row(
-            //TODO switching beetween male/female should reset the widget depending on the gender
-            children: [
-              Text(
-                "femme ♀",
-                style: TextStyle(
-                    color: _gender == Gender.female
-                        ? Colors.pinkAccent
-                        : Colors.grey),
-              ),
-              //TODO widget switch male female
-              Switch(
-                // This bool value toggles the switch.
-                value: _switch,
-                activeColor: Colors.red,
-                onChanged: (bool value) {
-                  setState(() {
-                    if (value) {
-                      _gender = Gender.male;
-                    } else {
-                      _gender = Gender.female;
-                    }
-                    _switch = value;
-                  });
-                },
-              ),
-              Text(
-                "♂ homme",
-                style: TextStyle(
-                    color: _gender == Gender.male
-                        ? Colors.greenAccent
-                        : Colors.grey),
-              )
-            ],
-          ),
+          SwitchGender(
+              gender: _gender,
+              onValueChanged: (Gender value) {
+                setState(() {
+                  _gender = value;
+                });
+              }),
           Expanded(
             child: ListView(
               children: [
