@@ -23,7 +23,7 @@ class RowTab extends StatefulWidget {
 }
 
 class _RowTabState extends State<RowTab> {
-  int _valueToReturn = 0;
+  int _valueToReturn = -1;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaby/checkbox_return_value.dart';
 import 'package:gaby/row_tab.dart';
+import 'package:gaby/widgets/score.dart';
 
 enum Gender { female, male }
 
@@ -25,23 +26,15 @@ class BlatchfordScore extends StatefulWidget {
 class _BlatchfordScoreState extends State<BlatchfordScore> {
   bool _switch = false;
   Gender _gender = Gender.female;
-  int _urea = 0;
-  int _haemoglobin = 0;
-  int _systolicBloodPressure = 0;
+  int _urea = -1;
+  int _haemoglobin = -1;
+  int _systolicBloodPressure = -1;
   int _pulseGreatherOrEqual100 = 0;
   int _melaena = 0;
   int _syncope = 0;
   int _hepaticDisease = 0;
   int _cardiacFailure = 0;
 
-/*Score is equal to "0" if the following are all present:[citation needed]
-
-    Hemoglobin level > 12.9 g/dL (men) or > 11.9 g/dL (women)
-    Systolic blood pressure > 109 mm Hg
-    Pulse < 100/minute
-    Blood urea nitrogen level < 6.5 mmol/L
-    No melena or syncope
-    No past or present liver disease or heart failure*/
   int calculateScore() {
     return _urea +
         _haemoglobin +
@@ -54,7 +47,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
   }
 
   bool isAllValuesSet() {
-    return _urea != 0 && _haemoglobin != 0 && _systolicBloodPressure != 0;
+    return _urea != -1 && _haemoglobin != -1 && _systolicBloodPressure != -1;
   }
 
   @override
@@ -63,8 +56,12 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
       appBar: AppBar(title: const Text("title")),
       body: Column(
         children: [
+          Score(
+              title: "Blatchford score",
+              score: calculateScore(),
+              allValueSet: isAllValuesSet()),
           // if are values are set, show the score
-          isAllValuesSet() == true
+          /*isAllValuesSet() == true
               ? Text('Blatchford score : ${calculateScore()}',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -75,7 +72,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.orange,
-                      fontSize: 30)),
+                      fontSize: 30)),*/
           Row(
             //TODO switching beetween male/female should reset the widget depending on the gender
             children: [
@@ -92,7 +89,6 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                 value: _switch,
                 activeColor: Colors.red,
                 onChanged: (bool value) {
-                  // This is called when the user toggles the switch.
                   setState(() {
                     if (value) {
                       _gender = Gender.male;
@@ -118,6 +114,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                 RowTab(
                     title: "Urée (mmol/L)",
                     options: [
+                      RowTabOpts(title: "< 6.5", value: 0),
                       RowTabOpts(title: "6.5–8.0", value: 2),
                       RowTabOpts(title: "8.0–10.0", value: 3),
                       RowTabOpts(title: "10.0–25", value: 4),
@@ -134,10 +131,12 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                         : "Hémoglobine (g/L) ♂ Homme",
                     options: _gender == Gender.female
                         ? [
+                            RowTabOpts(title: "> 11.9", value: 0),
                             RowTabOpts(title: "10.0–11.9", value: 1),
-                            RowTabOpts(title: "< 10.0", value: 6)
+                            RowTabOpts(title: "< 10.0", value: 6),
                           ]
                         : [
+                            RowTabOpts(title: "> 12.9", value: 0),
                             RowTabOpts(title: "12.0–12.9", value: 1),
                             RowTabOpts(title: "10.0–11.9", value: 3),
                             RowTabOpts(title: "< 10.0", value: 6)
@@ -150,6 +149,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                 RowTab(
                     title: "Tension artérielle systolique (mmHg)",
                     options: [
+                      RowTabOpts(title: "> 109", value: 0),
                       RowTabOpts(title: "100-109", value: 1),
                       RowTabOpts(title: "90-99", value: 2),
                       RowTabOpts(title: "< 90", value: 3)

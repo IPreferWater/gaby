@@ -20,24 +20,22 @@ class ChildScore extends StatefulWidget {
 }
 
 class _ChildScoreState extends State<ChildScore> {
-  int _ascite = 0;
-  int _bilirubine = 0;
-  int _albumine = 0;
-  int _inr_tp = 0;
-  int _encephalopathie = 0;
+  int _ascite = -1;
+  int _bilirubine = -1;
+  int _albumine = -1;
+  int _inr_tp = -1;
+  int _encephalopathie = -1;
 
   int calculateScore() {
     return _ascite + _bilirubine + _albumine + _inr_tp + _encephalopathie;
   }
 
   bool isAllValuesSet() {
-    print(
-        "$_ascite + $_bilirubine + $_albumine + $_inr_tp + $_encephalopathie");
-    return _ascite != 0 &&
-        _bilirubine != 0 &&
-        _albumine != 0 &&
-        _inr_tp != 0 &&
-        _encephalopathie != 0;
+    return _ascite != -1 &&
+        _bilirubine != -1 &&
+        _albumine != -1 &&
+        _inr_tp != -1 &&
+        _encephalopathie != -1;
   }
 
   @override
