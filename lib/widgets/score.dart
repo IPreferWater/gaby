@@ -20,12 +20,14 @@ class ScoreState extends State<Score> {
   Widget build(BuildContext context) {
     return widget.allValueSet
         ? Text('${widget.title} : ${widget.score}',
-            style: TextStyle(
+        key: const Key("score"),
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
                 fontSize: 50))
         : Text('${widget.title} : remplissez tous les champs',
-            style: TextStyle(
+        key: const Key("score"),
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.orange,
                 fontSize: 30));

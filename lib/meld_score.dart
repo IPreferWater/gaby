@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gaby/row_tab.dart';
 import 'dart:math';
 
 class TodoName {
@@ -93,7 +90,7 @@ class _MeldScoreState extends State<MeldScore> {
           })
     ];
     return Scaffold(
-      appBar: AppBar(title: const Text("title")),
+      appBar: AppBar(title: const Text("Meld score")),
       body: Column(
         children: [
           // if are values are set, show the score

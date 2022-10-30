@@ -109,7 +109,7 @@ class _ChildScoreState extends State<ChildScore> {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text("title")),
+      appBar: AppBar(title: const Text("Child score")),
       body: Column(
         children: [
           // if are values are set, show the score

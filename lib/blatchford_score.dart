@@ -52,7 +52,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("title")),
+      appBar: AppBar(title: const Text("Blatchford score")),
       body: Column(
         children: [
           Score(
@@ -70,6 +70,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
             child: ListView(
               children: [
                 RowTab(
+                  key:const Key("urea"),
                     title: "Urée (mmol/L)",
                     options: [
                       RowTabOpts(title: "< 6.5", value: 0),
