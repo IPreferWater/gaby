@@ -125,7 +125,7 @@ class _ChildScoreState extends State<ChildScore> {
                       fontWeight: FontWeight.bold,
                       color: Colors.orange,
                       fontSize: 30)),
-          Expanded(
+          /*Expanded(
             child: ListView.builder(
                 itemCount: todoNames.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -134,7 +134,7 @@ class _ChildScoreState extends State<ChildScore> {
                       options: todoNames[index].rowTabOpts,
                       onValueChanged: todoNames[index].onValueChanged);
                 }),
-          )
+          )*/
         ],
       ),
     );
