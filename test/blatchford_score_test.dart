@@ -6,7 +6,10 @@ import 'package:gaby/international/t.dart';
 import 'package:gaby/meld_score.dart';
 
 void main() {
-  testWidgets('blatchford', (WidgetTester tester) async {
+  testWidgets('blatchfordZero', (WidgetTester tester) async {
+
+    tester.binding.window.physicalSizeTestValue = Size(10000, 10000);
+
     final radios = find.byWidgetPredicate(
       (widget) => widget is Radio<int>,
     );
@@ -18,22 +21,11 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(home: BlatchfordScore()));
 
-    //var inr = find.byKey(Key("inr"));
-    //var creatinine = find.byKey(Key("créatinine (mg/dl)"));
-
-    
-
     await tester.tap(ureaWidget);
     await tester.tap(haemoglobin);
     await tester.tap(systolicBloodPressure);
     await tester.pump();
 
     expect(find.text("Blatchford score : 0"), findsOneWidget);
-    
-    //await tester.enterText(biliburine, "0.2");
-    //await tester.enterText(inr, "2");
-    //await tester.enterText(creatinine, "0.8");
-
-    
   });
 }
