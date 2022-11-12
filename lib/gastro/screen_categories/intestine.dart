@@ -7,6 +7,7 @@ class Intestine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text("Intestine")),
         body: Column(children: [
       Center(
         child: ElevatedButton(

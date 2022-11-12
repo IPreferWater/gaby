@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               children: [
                 Image.asset("assets/intestine.png"),
                 SizedBox(width: 5),
-                Text("intestine"),
+                Text("gastro"),
               ],
             )),
             body: CategoriesScreen()));
