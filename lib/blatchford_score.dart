@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gaby/checkbox_return_value.dart';
-import 'package:gaby/international/t.dart';
-import 'package:gaby/row_tab.dart';
+import 'package:gaby/widgets/checkbox_return_value.dart';
+import 'package:gaby/const/international.dart';
+import 'package:gaby/widgets/row_tab.dart';
 import 'package:gaby/widgets/score.dart';
 import 'package:gaby/const/const.dart';
 import 'package:gaby/widgets/switch_gender.dart';
@@ -72,7 +72,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
               children: [
                 RowTab(
                     title: "(mmol/L)",
-                    vvv: urea,
+                    dico: UREA,
                     options: [
                       RowTabOpts(title: "< 6.5", value: 0),
                       RowTabOpts(title: "6.5–8.0", value: 2),
@@ -85,11 +85,11 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                         _urea = value;
                       });
                     }),
-                     RowTab(
+                RowTab(
                     title: _gender == Gender.female
                         ? "(g/L) ♀ Femme"
                         : "(g/L) ♂ Homme",
-                    vvv: haemoglobin,
+                    dico: HAEMOGLOBIN,
                     options: _gender == Gender.female
                         ? [
                             RowTabOpts(title: "> 11.9", value: 0),
@@ -107,9 +107,9 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                         _haemoglobin = value;
                       });
                     }),
-                     RowTab(
+                RowTab(
                     title: "(mmHg)",
-                    vvv: systolicBloodPressure,
+                    dico: SYSTOLIC_BLOOD_PRESSURE,
                     options: [
                       RowTabOpts(title: "> 109", value: 0),
                       RowTabOpts(title: "100-109", value: 1),
@@ -121,8 +121,8 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                         _systolicBloodPressure = value;
                       });
                     }),
-               CheckboxReturnValue(
-                  key: Key(pulse.id),
+                CheckboxReturnValue(
+                    key: Key(PULSE.id),
                     title: "Fréquence cardiaque > 100 b/min",
                     valueToReturn: 1,
                     onValueChanged: (int value) {
@@ -131,7 +131,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
-                  key: Key(melena.id),
+                    key: Key(MELENA.id),
                     title: "Melena",
                     valueToReturn: 1,
                     onValueChanged: (int value) {
@@ -140,7 +140,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
-                  key: Key(syncope.id),
+                    key: Key(SYNCOPE.id),
                     title: "Syncope",
                     valueToReturn: 2,
                     onValueChanged: (int value) {
@@ -149,7 +149,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
-                  key: Key(hepaticDisease.id),
+                    key: Key(HEPATIC_DISEASE.id),
                     title: "Insuffisance hépatique",
                     valueToReturn: 2,
                     onValueChanged: (int value) {
@@ -158,7 +158,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
-                  key: Key(cardiacFailure.id),
+                    key: Key(CARDIAC_FAILURE.id),
                     title: "Insuffisance cardiaque",
                     valueToReturn: 2,
                     onValueChanged: (int value) {

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:gaby/international/t.dart';
-import 'package:gaby/row_tab.dart';
+import 'package:gaby/const/international.dart';
+import 'package:gaby/widgets/row_tab.dart';
 import 'package:gaby/const/const.dart';
 import 'package:gaby/widgets/score.dart';
 
@@ -58,7 +58,7 @@ class _ChildScoreState extends State<ChildScore> {
             children: [
               RowTab(
                   title: ASCITE.map[Languages.fr]!,
-                  vvv: ASCITE,
+                  dico: ASCITE,
                   options: [
                     RowTabOpts(title: "absent", value: 1),
                     RowTabOpts(title: "modérée", value: 2),
@@ -71,7 +71,7 @@ class _ChildScoreState extends State<ChildScore> {
                   }),
               RowTab(
                   title: BILBURINE.map[Languages.fr]!,
-                  vvv: BILBURINE,
+                  dico: BILBURINE,
                   options: [
                     RowTabOpts(title: "<35", value: 1),
                     RowTabOpts(title: "35-50", value: 2),
@@ -84,7 +84,7 @@ class _ChildScoreState extends State<ChildScore> {
                   }),
               RowTab(
                   title: ALBUMINE.map[Languages.fr]!,
-                  vvv: ALBUMINE,
+                  dico: ALBUMINE,
                   options: [
                     RowTabOpts(title: ">35", value: 1),
                     RowTabOpts(title: "28-35", value: 2),
@@ -97,7 +97,7 @@ class _ChildScoreState extends State<ChildScore> {
                   }),
               RowTab(
                   title: '${INR.map[Languages.fr]!} (TP)',
-                  vvv: INR,
+                  dico: INR,
                   options: [
                     RowTabOpts(title: "<1.7 (>50%)", value: 1),
                     RowTabOpts(title: "1.7-2.2 (40-50%)", value: 2),
@@ -110,7 +110,7 @@ class _ChildScoreState extends State<ChildScore> {
                   }),
               RowTab(
                   title: '${ENCEPHALOPATHIE.map[Languages.fr]!} (TP)',
-                  vvv: ENCEPHALOPATHIE,
+                  dico: ENCEPHALOPATHIE,
                   options: [
                     RowTabOpts(title: "Absente", value: 1),
                     RowTabOpts(title: "Légère à modérée (stade 1-2)", value: 2),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gaby/blatchford_score.dart';
-import 'package:gaby/international/t.dart';
+import 'package:gaby/const/international.dart';
 
 import 'package:gaby/meld_score.dart';
 import 'package:gaby/const/const.dart';

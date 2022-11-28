@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'child_score.dart';
 import 'gastro/screen_categories/intestine.dart';
-import 'gastro_categories.dart';
+import 'gastro/gastro_categories.dart';
 
 void main() {
   runApp(const MyApp());

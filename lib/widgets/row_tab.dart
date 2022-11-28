@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaby/const/const.dart';
 
-import 'international/t.dart';
+import '../const/international.dart';
 
 class RowTabOpts {
   String title;
@@ -14,12 +14,12 @@ class RowTab extends StatefulWidget {
   const RowTab(
       {super.key,
       required this.title,
-      required this.vvv,
+      required this.dico,
       required this.onValueChanged,
       required this.options});
 
   final String title;
-  final vv vvv;
+  final Dico dico;
   final ValueChanged<int> onValueChanged;
   final List<RowTabOpts> options;
 
@@ -35,16 +35,16 @@ class _RowTabState extends State<RowTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('${widget.vvv.map[Languages.fr]!} ${widget.title}',
+        Text('${widget.dico.map[Languages.fr]!} ${widget.title}',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.blue,
             )),
-            for (var i = 0; i < widget.options.length; i++)
-              ListTile(
-                 title: Text(widget.options[i].title),
+        for (var i = 0; i < widget.options.length; i++)
+          ListTile(
+              title: Text(widget.options[i].title),
               leading: Radio<int>(
-                key: Key('${widget.vvv.id}-${i}'),
+                key: Key('${widget.dico.id}-${i}'),
                 value: widget.options[i].value,
                 groupValue: _valueToReturn,
                 onChanged: (int? value) {
@@ -54,9 +54,6 @@ class _RowTabState extends State<RowTab> {
                   });
                 },
               ))
-            
-            
-  
 
         /*for (var opts in widget.options)
           ListTile(
