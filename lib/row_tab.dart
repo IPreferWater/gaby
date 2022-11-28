@@ -29,18 +29,36 @@ class RowTab extends StatefulWidget {
 
 class _RowTabState extends State<RowTab> {
   int _valueToReturn = -1;
+  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      
       children: [
         Text('${widget.vvv.map[Languages.fr]!} ${widget.title}',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.blue,
             )),
-        for (var opts in widget.options)
+            for (var i = 0; i < widget.options.length; i++)
+              ListTile(
+                 title: Text(widget.options[i].title),
+              leading: Radio<int>(
+                key: Key('${widget.vvv.id}-${i}'),
+                value: widget.options[i].value,
+                groupValue: _valueToReturn,
+                onChanged: (int? value) {
+                  widget.onValueChanged(widget.options[i].value);
+                  setState(() {
+                    _valueToReturn = widget.options[i].value;
+                  });
+                },
+              ))
+            
+            
+  
+
+        /*for (var opts in widget.options)
           ListTile(
               title: Text(opts.title),
               leading: Radio<int>(
@@ -53,7 +71,7 @@ class _RowTabState extends State<RowTab> {
                     _valueToReturn = opts.value;
                   });
                 },
-              ))
+              ))*/
       ],
     );
   }

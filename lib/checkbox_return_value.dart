@@ -35,16 +35,16 @@ class _CheckboxState extends State<CheckboxReturnValue> {
               color: Colors.blue,
             )),
         Checkbox(
+          key: Key('checkbox-${widget.key}'),
           checkColor: Colors.white,
           value: _checked,
           onChanged: (bool? checked) {
-            if (  checked != null && checked) {
+            if (checked != null && checked) {
               widget.onValueChanged(widget.valueToReturn);
-            }
-            else {
+            } else {
               widget.onValueChanged(0);
             }
-            
+
             setState(() {
               _checked = !_checked;
             });

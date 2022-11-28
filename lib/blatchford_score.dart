@@ -86,20 +86,6 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                      RowTab(
-                    title: "(mmHg)",
-                    vvv: systolicBloodPressure,
-                    options: [
-                      RowTabOpts(title: "> 109", value: 0),
-                      RowTabOpts(title: "100-109", value: 1),
-                      RowTabOpts(title: "90-99", value: 2),
-                      RowTabOpts(title: "< 90", value: 3)
-                    ],
-                    onValueChanged: (int value) {
-                      setState(() {
-                        _systolicBloodPressure = value;
-                      });
-                    }),
-                RowTab(
                     title: _gender == Gender.female
                         ? "(g/L) ♀ Femme"
                         : "(g/L) ♂ Homme",
@@ -121,8 +107,22 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                         _haemoglobin = value;
                       });
                     }),
-               
-                CheckboxReturnValue(
+                     RowTab(
+                    title: "(mmHg)",
+                    vvv: systolicBloodPressure,
+                    options: [
+                      RowTabOpts(title: "> 109", value: 0),
+                      RowTabOpts(title: "100-109", value: 1),
+                      RowTabOpts(title: "90-99", value: 2),
+                      RowTabOpts(title: "< 90", value: 3)
+                    ],
+                    onValueChanged: (int value) {
+                      setState(() {
+                        _systolicBloodPressure = value;
+                      });
+                    }),
+               CheckboxReturnValue(
+                  key: Key(pulse.id),
                     title: "Fréquence cardiaque > 100 b/min",
                     valueToReturn: 1,
                     onValueChanged: (int value) {
@@ -131,6 +131,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
+                  key: Key(melena.id),
                     title: "Melena",
                     valueToReturn: 1,
                     onValueChanged: (int value) {
@@ -139,6 +140,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
+                  key: Key(syncope.id),
                     title: "Syncope",
                     valueToReturn: 2,
                     onValueChanged: (int value) {
@@ -147,6 +149,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
+                  key: Key(hepaticDisease.id),
                     title: "Insuffisance hépatique",
                     valueToReturn: 2,
                     onValueChanged: (int value) {
@@ -155,6 +158,7 @@ class _BlatchfordScoreState extends State<BlatchfordScore> {
                       });
                     }),
                 CheckboxReturnValue(
+                  key: Key(cardiacFailure.id),
                     title: "Insuffisance cardiaque",
                     valueToReturn: 2,
                     onValueChanged: (int value) {
